@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานสรุปเหรียญรางวัล กทม. - 8 พฤษภาคม 2569</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Mock Lucide components since we are using CDN
+        const Icon = ({ name, className }) => {
+            useEffect(() => {
+                lucide.createIcons();
+            }, []);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        const App = () => {
+            const [searchTerm, setSearchTerm] = useState('');
+
+            const medalData = [
+                // GOLD
+                { type: 'Gold', sport: 'คาราเต้', event: 'ท่ารำทีมหญิง รุ่นอายุ 14 - 18 ปี', athletes: ['ชมนภัทร รอดบุญ', 'นันทณัฎฐ์ ชุ่มวงศ์', 'ปรัชญาภรณ์ อรรคฮาต', 'สุภชาดา เตรณานนท์'] },
+                { type: 'Gold', sport: 'คาราเต้', event: 'บุคคลชาย รุ่น (- 45 กก.) อายุ 11-13 ปี', athletes: ['หัสธร เตชะไชยวงศ์'] },
+                { type: 'Gold', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - ทีมชาย (70 กม.)', athletes: ['บูรพา หิงไธสง', 'พีรวัส วิทิตพนิตพันธ์', 'ภัทรภูมิ อ้นสุวรรณ', 'อธิคุณ แสนตา', 'อัรซาคาน ไทยปาทาน'] },
+                { type: 'Gold', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ศิวะพร พุทธอร่าม'] },
+                { type: 'Gold', sport: 'ซอฟท์เทนนิส', event: 'บุคคลหญิง', athletes: ['ธัญพิชชา สมสนิท'] },
+                { type: 'Gold', sport: 'ซอฟท์เทนนิส', event: 'หญิงคู่', athletes: ['ธัญพิชชา สมสนิท', 'อลิชา มายา ชีกเลอร์'] },
+                { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 33 กก.)', athletes: ['ธวัชชัย ทัดทอง'] },
+                { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย พุมเซ่ (Poomsae)', athletes: ['ปุญวิชย์ สมวิทูร'] },
+                { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลหญิง รุ่น (- 44 กก.) มากกว่า 42 กก. แต่ไม่เกิน 44 กก.', athletes: ['ณัฏฐวี วงษ์ชู'] },
+                { type: 'Gold', sport: 'เทนนิส', event: 'ทีมชาย', athletes: ['คุณานันท์ พันธราธร', 'ปวรปรัชญ์ งั่นบุญศรี'] },
+                { type: 'Gold', sport: 'เทนนิส', event: 'ทีมหญิง', athletes: ['โชติรินทร์ แก้วก่า', 'พิชญาภัค ศรีมุกข์', 'ศรร์วิศา กุลพิศาลรัศม์'] },
+                { type: 'Gold', sport: 'มวยปล้ำ', event: 'บุคคลหญิง ฟรีสไตล์ รุ่น ไม่เกิน 57 กก.', athletes: ['พรรษา ลูอีส เซ็ทวิค'] },
+                { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - โต๊ะกระโดด - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
+                { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - บาร์คู่ - ชาย', athletes: ['พีรดนย์ ชาลี'] },
+                { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ ทีมหญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส', 'พิมพ์โมรี โกไศยกานนท์', 'ภูภัทรา จงจิระวงศา', 'วิตา ค้าเจริญ', 'อิสสริยา สกลเสก'] },
+                { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - คานทรงตัว - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: '(โชว์ศิลปะการต่อสู้ เยาวชนไม่เกิน 18 ปี) - DUO OPEN', athletes: ['ภัทรวรรธ คำสร้อย', 'อัครเดช ปะตังเวสา'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 40 กก. หญิง', athletes: ['ญภา ธนประเวศน์'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 44 กก. ชาย', athletes: ['ฮาลุ ซูซูกิ'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักเกิน 63 ก.ก. หญิง', athletes: ['กัญญาลักษณ์ เสือคำ'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 62 ก.ก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
+                { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 77 ก.ก. ชาย', athletes: ['กรณภว์ แดงอินทร์'] },
+                
+                // SILVER
+                { type: 'Silver', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ธัญชนก จินาภิรมย์'] },
+                { type: 'Silver', sport: 'ซอฟท์เทนนิส', event: 'บุคคลหญิง', athletes: ['อลิชา มายา ชีกเลอร์'] },
+                { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ (Poomsae) คู่ผสม', athletes: ['นิธิกร ยิ้มประเสริฐ', 'สุชานันท์ อินทร์แจ้ง'] },
+                { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ (Poomsae) ทีมหญิง', athletes: ['กัญญาพัชร ไหมเจริญ', 'เพชรพราว เพชรภู่', 'ภริทภร ณ บางช้าง'] },
+                { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - บาร์ต่างระดับ - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
+                { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ประเภทบุคคลรวมอุปกรณ์ หญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: '(โชว์ศิลปะการต่อสู้ ยุวชนไม่เกิน 15 ปี) - DUO OPEN', athletes: ['สุวภัทร เอี่ยมพลอยศรี', 'หฤษฏ์ เกษตรภิบาล'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 44 กก. หญิง', athletes: ['กฤติญา ช่วยเกิด'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 48 กก. ชาย', athletes: ['สหรรษ ส่งแสง'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 52 ก.ก. หญิง', athletes: ['บุริศรารัตน์ จันทะนาข่า'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 56 ก.ก. ชาย', athletes: ['จาฏวัตร กังวล'] },
+                { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 63 ก.ก. หญิง', athletes: ['สิริขวัญ เอี่ยมพลอยศรี'] },
+
+                // BRONZE
+                { type: 'Bronze', sport: 'คาราเต้', event: 'ท่ารำทีมชาย รุ่นอายุ 9 - 13 ปี', athletes: ['ชวินทร์ อนุสนธิ์อดิสัย', 'พัฒน์ภาม เพชรเพริศ', 'ภามพัฒน์ เพชรเพริศ', 'รชานนท์ ธนสุนทรกูร'] },
+                { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'ชายคู่', athletes: ['พัทธดนย์ ไลอ้อน', 'รวิพล ขวัญจันทร์'] },
+                { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'บุคคลชาย', athletes: ['พัทธดนย์ ไลอ้อน'] },
+                { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 48 กก.) มากกว่า 45 กก. แต่ไม่เกิน 48 กก.', athletes: ['สุวชัช สายสมบัติ'] },
+                { type: 'Bronze', sport: 'มวยปล้ำ', event: 'บุคคลชาย เกรกโกร - โรมัน รุ่น ไม่เกิน 71 กก.', athletes: ['ธนพนธ์ อินทอง'] },
+                { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - บาร์ต่างระดับ - หญิง', athletes: ['วิตา ค้าเจริญ'] },
+                { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - ฟลอร์เอ็กเซอร์ไซส์ - หญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส'] },
+                { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - ฟลอร์เอ็กเซอร์ไซส์ - ชาย', athletes: ['พีรดนย์ ชาลี'] },
+                { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - ห่วง - ชาย', athletes: ['พีรดนย์ ชาลี'] },
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 52 กก. ชาย', athletes: ['จิรัฎฐ์ รัตนฉวี'] },
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 56 กก. ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักเกิน 77 ก.ก. ชาย', athletes: ['พีระศิลป์ สวนเมือง'] },
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 48 ก.ก. หญิง', athletes: ['ภัสรินทร์ สุริยา'] },
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 69 ก.ก. ชาย', athletes: ['ธนชา เมืองศรี'] }
+            ];
+
+            const summary = { Gold: 22, Silver: 12, Bronze: 14, Total: 48 };
+
+            const filteredData = medalData.filter(item => 
+                item.sport.includes(searchTerm) || 
+                item.event.includes(searchTerm) || 
+                item.athletes.some(a => a.includes(searchTerm))
+            );
+
+            const getMedalColor = (type) => {
+                switch(type) {
+                    case 'Gold': return 'text-amber-500 bg-amber-50 border-amber-200';
+                    case 'Silver': return 'text-slate-400 bg-slate-50 border-slate-200';
+                    case 'Bronze': return 'text-orange-700 bg-orange-50 border-orange-200';
+                    default: return 'text-gray-500 bg-gray-50';
+                }
+            };
+
+            return (
+                <div className="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
+                    <div className="max-w-6xl mx-auto">
+                        <header className="bg-emerald-700 rounded-3xl p-8 mb-8 text-white shadow-xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-2xl"></div>
+                            <div className="relative z-10">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <Icon name="trophy" className="w-10 h-10 text-yellow-400" />
+                                    <h1 className="text-3xl md:text-4xl font-bold tracking-tight">รายงานสรุปผลงานนักกีฬา กทม.</h1>
+                                </div>
+                                <p className="text-emerald-100 text-lg opacity-90">สรุปเหรียญรางวัลประจำวันที่ 8 พฤษภาคม 2569</p>
+                            </div>
+                        </header>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                            <StatCard label="เหรียญทอง" value={summary.Gold} icon="award" color="amber" />
+                            <StatCard label="เหรียญเงิน" value={summary.Silver} icon="award" color="slate" />
+                            <StatCard label="เหรียญทองแดง" value={summary.Bronze} icon="award" color="orange" />
+                            <StatCard label="รวมทั้งหมด" value={summary.Total} icon="trophy" color="emerald" />
+                        </div>
+
+                        <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 mb-6 flex items-center gap-3">
+                            <Icon name="search" className="text-slate-400 w-5 h-5" />
+                            <input 
+                                type="text" 
+                                placeholder="ค้นหาชื่อนักกีฬา, ชนิดกีฬา หรือรายการแข่งขัน..." 
+                                className="w-full bg-transparent border-none focus:ring-0 text-slate-700 outline-none"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-8">
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="bg-slate-50 border-b border-slate-100">
+                                            <th className="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-16 text-center">ลำดับ</th>
+                                            <th className="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-32">เหรียญ</th>
+                                            <th className="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-40">ชนิดกีฬา</th>
+                                            <th className="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider">รายการแข่งขัน</th>
+                                            <th className="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider">นักกีฬา</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-50">
+                                        {filteredData.map((item, index) => (
+                                            <tr key={index} className="hover:bg-slate-50/50 transition-colors group">
+                                                <td className="p-5 text-slate-400 font-medium text-center">{index + 1}</td>
+                                                <td className="p-5">
+                                                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold w-fit ${getMedalColor(item.type)}`}>
+                                                        <Icon name="medal" className="w-4 h-4" />
+                                                        {item.type === 'Gold' ? 'เหรียญทอง' : item.type === 'Silver' ? 'เหรียญเงิน' : 'เหรียญทองแดง'}
+                                                    </div>
+                                                </td>
+                                                <td className="p-5">
+                                                    <span className="font-semibold text-slate-700">{item.sport}</span>
+                                                </td>
+                                                <td className="p-5 text-slate-600">
+                                                    <div className="flex items-start gap-1.5">
+                                                        <Icon name="info" className="w-4 h-4 mt-0.5 text-slate-300" />
+                                                        <span>{item.event}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="p-5">
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        {item.athletes.map((athlete, aIdx) => (
+                                                            <div key={aIdx} className="bg-white border border-slate-200 px-3 py-1 rounded-lg text-sm text-slate-700 flex items-center gap-1.5 shadow-sm">
+                                                                <Icon name="users" className="w-3.5 h-3.5 text-emerald-500" />
+                                                                {athlete}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const StatCard = ({ label, value, icon, color }) => {
+            const colorClasses = {
+                amber: 'bg-amber-100 text-amber-500',
+                slate: 'bg-slate-100 text-slate-400',
+                orange: 'bg-orange-50 text-orange-700',
+                emerald: 'bg-emerald-100 text-emerald-600'
+            };
+            return (
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-3 ${colorClasses[color]}`}>
+                        <Icon name={icon} className="w-7 h-7" />
+                    </div>
+                    <span className="text-slate-500 text-sm font-medium">{label}</span>
+                    <span className="text-3xl font-bold text-slate-800">{value}</span>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

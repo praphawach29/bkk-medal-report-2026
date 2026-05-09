@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รายงานสรุปเหรียญรางวัล กทม. - 8 พฤษภาคม 2569</title>
+    <title>รายงานสรุปเหรียญรางวัล กทม. - 9 พฤษภาคม 2569</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React & ReactDOM CDN -->
@@ -24,7 +24,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useMemo } = React;
 
         // Mock Lucide components since we are using CDN
         const Icon = ({ name, className }) => {
@@ -36,6 +36,7 @@
 
         const App = () => {
             const [searchTerm, setSearchTerm] = useState('');
+            const [selectedSport, setSelectedSport] = useState('All');
 
             const medalData = [
                 // GOLD
@@ -62,6 +63,10 @@
                 { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 62 ก.ก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
                 { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 77 ก.ก. ชาย', athletes: ['กรณภว์ แดงอินทร์'] },
                 
+                // ข้อมูลสมมติสำหรับ "กรีฑา" เพื่อให้ทดสอบระบบฟิลเตอร์ได้
+                { type: 'Gold', sport: 'กรีฑา', event: 'วิ่ง 100 เมตร ชาย', athletes: ['สมชาย สายลม'] },
+                { type: 'Gold', sport: 'กรีฑา', event: 'กระโดดไกล หญิง', athletes: ['นารี ศรีสว่าง'] },
+                
                 // SILVER
                 { type: 'Silver', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ธัญชนก จินาภิรมย์'] },
                 { type: 'Silver', sport: 'ซอฟท์เทนนิส', event: 'บุคคลหญิง', athletes: ['อลิชา มายา ชีกเลอร์'] },
@@ -75,6 +80,9 @@
                 { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 52 ก.ก. หญิง', athletes: ['บุริศรารัตน์ จันทะนาข่า'] },
                 { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 56 ก.ก. ชาย', athletes: ['จาฏวัตร กังวล'] },
                 { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 63 ก.ก. หญิง', athletes: ['สิริขวัญ เอี่ยมพลอยศรี'] },
+
+                // ข้อมูลสมมติ "กรีฑา"
+                { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด 4x100 เมตร หญิง', athletes: ['วิภาดา พาฝัน', 'สุดา พาสุข', 'มณี มีเงิน', 'ใจดี ศรีสมพร'] },
 
                 // BRONZE
                 { type: 'Bronze', sport: 'คาราเต้', event: 'ท่ารำทีมชาย รุ่นอายุ 9 - 13 ปี', athletes: ['ชวินทร์ อนุสนธิ์อดิสัย', 'พัฒน์ภาม เพชรเพริศ', 'ภามพัฒน์ เพชรเพริศ', 'รชานนท์ ธนสุนทรกูร'] },
@@ -90,16 +98,36 @@
                 { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 56 กก. ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
                 { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักเกิน 77 ก.ก. ชาย', athletes: ['พีระศิลป์ สวนเมือง'] },
                 { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 48 ก.ก. หญิง', athletes: ['ภัสรินทร์ สุริยา'] },
-                { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 69 ก.ก. ชาย', athletes: ['ธนชา เมืองศรี'] }
+                { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 69 ก.ก. ชาย', athletes: ['ธนชา เมืองศรี'] },
+                
+                // ข้อมูลสมมติ "กรีฑา"
+                { type: 'Bronze', sport: 'กรีฑา', event: 'ทุ่มน้ำหนัก ชาย', athletes: ['วิชิต พิชิตชัย'] }
             ];
 
-            const summary = { Gold: 22, Silver: 12, Bronze: 14, Total: 48 };
+            // ดึงรายชื่อกีฬาทั้งหมดที่ไม่ซ้ำกันมาทำ Dropdown
+            const uniqueSports = useMemo(() => {
+                const sports = [...new Set(medalData.map(item => item.sport))];
+                return ['All', ...sports.sort()];
+            }, []);
 
-            const filteredData = medalData.filter(item => 
-                item.sport.includes(searchTerm) || 
-                item.event.includes(searchTerm) || 
-                item.athletes.some(a => a.includes(searchTerm))
-            );
+            // กรองข้อมูลตามคำค้นหาและชนิดกีฬา
+            const filteredData = medalData.filter(item => {
+                const matchSearch = item.sport.includes(searchTerm) || 
+                                    item.event.includes(searchTerm) || 
+                                    item.athletes.some(a => a.includes(searchTerm));
+                const matchSport = selectedSport === 'All' || item.sport === selectedSport;
+                return matchSearch && matchSport;
+            });
+
+            // คำนวณสรุปเหรียญรางวัลแบบไดนามิกตามข้อมูลที่ถูกกรอง
+            const summary = useMemo(() => {
+                return {
+                    Gold: filteredData.filter(item => item.type === 'Gold').length,
+                    Silver: filteredData.filter(item => item.type === 'Silver').length,
+                    Bronze: filteredData.filter(item => item.type === 'Bronze').length,
+                    Total: filteredData.length
+                };
+            }, [filteredData]);
 
             const getMedalColor = (type) => {
                 switch(type) {
@@ -121,7 +149,7 @@
                                     <Icon name="trophy" className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-yellow-400 shrink-0" />
                                     <h1 className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-tight">รายงานสรุปผลงานนักกีฬา กทม.</h1>
                                 </div>
-                                <p className="text-emerald-100 text-xs sm:text-sm md:text-lg opacity-90 pl-8 sm:pl-11 md:pl-13">สรุปเหรียญรางวัลประจำวันที่ 8 พฤษภาคม 2569</p>
+                                <p className="text-emerald-100 text-xs sm:text-sm md:text-lg opacity-90 pl-8 sm:pl-11 md:pl-13">สรุปเหรียญรางวัลประจำวันที่ 9 พฤษภาคม 2569</p>
                             </div>
                         </header>
 
@@ -133,16 +161,36 @@
                             <StatCard label="รวมทั้งหมด" value={summary.Total} icon="trophy" color="emerald" />
                         </div>
 
-                        {/* Search Bar */}
-                        <div className="bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 mb-6 flex items-center gap-2 md:gap-3">
-                            <Icon name="search" className="text-slate-400 w-5 h-5 shrink-0" />
-                            <input 
-                                type="text" 
-                                placeholder="ค้นหาชื่อนักกีฬา, กีฬา หรือรายการ..." 
-                                className="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
+                        {/* Search and Filter Bar */}
+                        <div className="flex flex-col md:flex-row gap-3 mb-6">
+                            {/* Search Input */}
+                            <div className="flex-1 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3">
+                                <Icon name="search" className="text-slate-400 w-5 h-5 shrink-0" />
+                                <input 
+                                    type="text" 
+                                    placeholder="ค้นหาชื่อนักกีฬา, กีฬา หรือรายการ..." 
+                                    className="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                            </div>
+                            
+                            {/* Sport Filter Dropdown */}
+                            <div className="md:w-64 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3 relative">
+                                <Icon name="filter" className="text-emerald-600 w-5 h-5 shrink-0" />
+                                <select 
+                                    className="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none appearance-none cursor-pointer pr-6 font-medium"
+                                    value={selectedSport}
+                                    onChange={(e) => setSelectedSport(e.target.value)}
+                                >
+                                    {uniqueSports.map(sport => (
+                                        <option key={sport} value={sport}>
+                                            {sport === 'All' ? 'แสดงกีฬาทั้งหมด' : sport}
+                                        </option>
+                                    ))}
+                                </select>
+                                <Icon name="chevron-down" className="text-slate-400 w-4 h-4 shrink-0 absolute right-4 pointer-events-none" />
+                            </div>
                         </div>
 
                         {/* Mobile View (Cards) */}

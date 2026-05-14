@@ -4,27 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รายงานสรุปเหรียญรางวัล กทม. - 13 พฤษภาคม 2569</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap');
-        body {
-            font-family: 'Sarabun', sans-serif;
-        }
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
+        body { font-family: 'Sarabun', sans-serif; }
+        select { appearance: none; -webkit-appearance: none; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
     <div class="min-h-screen p-3 md:p-8">
         <div class="max-w-6xl mx-auto">
             
-            <!-- Header Section -->
             <header class="bg-emerald-700 rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 mb-6 md:mb-8 text-white shadow-xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/10 rounded-full -mr-16 -mt-16 md:-mr-20 md:-mt-20 blur-xl md:blur-2xl"></div>
                 <div class="relative z-10">
@@ -32,11 +23,10 @@
                         <i data-lucide="trophy" class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-yellow-400 shrink-0"></i>
                         <h1 class="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-tight">รายงานสรุปผลงานนักกีฬา กทม.</h1>
                     </div>
-                    <p class="text-emerald-100 text-xs sm:text-sm md:text-lg opacity-90 pl-8 sm:pl-11 md:pl-13">สรุปเหรียญรางวัลประจำวันที่ 13 พฤษภาคม 2569</p>
+                    <p class="text-emerald-100 text-xs sm:text-sm md:text-lg opacity-90 pl-8 sm:pl-11 md:pl-13">สรุปเหรียญรางวัลประจำวันที่ 14 พฤษภาคม 2569</p>
                 </div>
             </header>
 
-            <!-- Summary Statistics -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
                 <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-2 md:mb-3 bg-amber-100 text-amber-500">
@@ -68,52 +58,37 @@
                 </div>
             </div>
 
-            <!-- Search and Filter Bar -->
             <div class="flex flex-col md:flex-row gap-3 mb-6">
                 <div class="flex-1 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3">
                     <i data-lucide="search" class="text-slate-400 w-5 h-5 shrink-0"></i>
-                    <input 
-                        id="search-input"
-                        type="text" 
-                        placeholder="ค้นหาชื่อนักกีฬา, กีฬา หรือรายการ..." 
-                        class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none"
-                    />
+                    <input id="search-input" type="text" placeholder="ค้นหาชื่อนักกีฬา, กีฬา หรือรายการ..." class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none" />
                 </div>
-                
                 <div class="md:w-64 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3 relative">
                     <i data-lucide="filter" class="text-emerald-600 w-5 h-5 shrink-0"></i>
-                    <select 
-                        id="sport-select"
-                        class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none appearance-none cursor-pointer pr-8 font-medium"
-                    >
+                    <select id="sport-select" class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none cursor-pointer pr-8 font-medium">
                         <option value="All">แสดงกีฬาทั้งหมด</option>
                     </select>
                     <i data-lucide="chevron-down" class="text-slate-400 w-4 h-4 shrink-0 absolute right-4 pointer-events-none"></i>
                 </div>
             </div>
 
-            <!-- Mobile View (Cards) -->
             <div id="mobile-view" class="md:hidden space-y-3 mb-8"></div>
-
-            <!-- Desktop View (Table) -->
             <div class="hidden md:block bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-8">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50 border-b border-slate-100">
-                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-16 text-center">ลำดับ</th>
-                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-36">เหรียญ</th>
-                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider w-40">ชนิดกีฬา</th>
-                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider">รายการแข่งขัน</th>
-                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase tracking-wider">นักกีฬา</th>
+                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase w-16 text-center">ลำดับ</th>
+                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase w-36">เหรียญ</th>
+                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase w-40">ชนิดกีฬา</th>
+                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase">รายการแข่งขัน</th>
+                                <th class="p-5 text-slate-500 font-semibold text-sm uppercase">นักกีฬา</th>
                             </tr>
                         </thead>
                         <tbody id="desktop-tbody" class="divide-y divide-slate-50"></tbody>
                     </table>
                 </div>
             </div>
-
-            <!-- Footer -->
             <footer class="mt-6 md:mt-8 text-center text-slate-400 text-xs md:text-sm pb-8">
                 <p>© 2569 กรุงเทพมหานคร - รายงานสรุปผลการแข่งขันกีฬา</p>
             </footer>
@@ -122,7 +97,7 @@
 
     <script>
         const medalData = [
-            // GOLD (76 items)
+            // GOLD (91)
             { type: 'Gold', sport: 'กรีฑา', event: 'กระโดดไกล - ชาย', athletes: ['ธนกร แดงมณี'] },
             { type: 'Gold', sport: 'กรีฑา', event: 'กระโดดค้ำ - ชาย', athletes: ['ธนกร แดงมณี'] },
             { type: 'Gold', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 100 เมตร - ชาย', athletes: ['ณัฐดนัย โตทรัพย์', 'ธนกฤต พรหมสอน', 'นัธทวัฒน์ เกตุตระการ', 'ปัณณธร เจริญสุข'] },
@@ -132,111 +107,134 @@
             { type: 'Gold', sport: 'จักรยาน', event: 'BMX บุคคลชาย', athletes: ['ติณณ์ วิจิตรพงษา'] },
             { type: 'Gold', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - ทีมชาย (70 กม.)', athletes: ['บูรพา หิงไธสง', 'พีรวัส วิทิตพนิตพันธ์', 'ภัทรภูมิ อ้นสุวรรณ', 'อธิคุณ แสนตา', 'อัรซาคาน ไทยปาทาน'] },
             { type: 'Gold', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ศิวะพร พุทธอร่าม'] },
+            { type: 'Gold', sport: 'จักรยาน', event: 'ลู่ ไทม์ไทรอัล - บุคคลหญิง (1 กม.)', athletes: ['กรกนก สร้อยวัน'] },
             { type: 'Gold', sport: 'จักรยาน', event: 'ดาวน์ฮิลล์ ระยะทาง 1.5-3.5 กิโลเมตร บุคคลหญิง', athletes: ['อนัญญา จารุเพ็ง'] },
             { type: 'Gold', sport: 'เจ็ตสกี', event: 'Ski 1500 Standard 13 - 15 ปี ชาย', athletes: ['นครา ศิลาชัย'] },
+            { type: 'Gold', sport: 'เจ็ตสกี', event: 'Runabout 1,000 13 - 18 ปี หญิง', athletes: ['ปาณิสรา ทวิพัฒน์'] },
             { type: 'Gold', sport: 'ชักกะเย่อ', event: 'ทีมหญิง 4 คน', athletes: ['กชพร ซีโตห์', 'จามิกร ชูบุญ', 'สุชัญญา สีสุเมฆ', 'อริสา นาคพันธ์'] },
             { type: 'Gold', sport: 'ซอฟท์เทนนิส', event: 'ทีมหญิง', athletes: ['กันยกร เกิดแก้ว', 'ธัญพิชชา สมสนิท', 'ยิ่งลักษณ์ เจริญรักษ์ธนกุล', 'วรรณิกา เพ็งประไพ', 'อลิชา มายา ชีกเลอร์'] },
             { type: 'Gold', sport: 'ซอฟท์เทนนิส', event: 'บุคคลหญิง', athletes: ['ธัญพิชชา สมสนิท'] },
             { type: 'Gold', sport: 'ซอฟท์เทนนิส', event: 'หญิงคู่', athletes: ['ธัญพิชชา สมสนิท', 'อลิชา มายา ชีกเลอร์'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 37 กก.) มากกว่า 33 กก. แต่ไม่เกิน 37 กก.', athletes: ['ณัฐกิตติ์ พ่วงนาคพันธุ์'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 53 กก.) มากกว่า 49 กก. แต่ไม่เกิน 53 กก.', athletes: ['จีรุตม์ เปรมปรี'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 37 กก.)', athletes: ['ณัฐกิตติ์ พ่วงนาคพันธุ์'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 53 กก.)', athletes: ['จีรุตม์ เปรมปรี'] },
             { type: 'Gold', sport: 'เทควันโด', event: 'ต่อสู้ทีมหญิง 5 คน', athletes: ['จิร์ยาภัค สิทธิสมบูรณ์', 'นภัสกร ศรีติมงคล', 'เนตรจินดา คูณผล', 'พิชญาพร ธานีรัตน์', 'อริสา แซ่ลี้'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 41 กก.) มากกว่า 37 กก. แต่ไม่เกิน 41 กก.', athletes: ['ถิรายุ เดือนฉาย'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 41 กก.)', athletes: ['ถิรายุ เดือนฉาย'] },
             { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย พุมเซ่ (Poomsae)', athletes: ['ปุญวิชย์ สมวิทูร'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 59 กก.) มากกว่า 55 กก. แต่ไม่เกิน 59 กก.', athletes: ['พงศกร ผาหลัก'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 73 กก.) มากกว่า 68 กก. แต่ไม่เกิน 73 กก.', athletes: ['อนันตสิน กาเจริญ'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 59 กก.)', athletes: ['พงศกร ผาหลัก'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 73 กก.)', athletes: ['อนันตสิน กาเจริญ'] },
             { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลหญิง ฟรีสไตล์ พุมเซ่ (Poomsae)', athletes: ['มนันย์ ทองบ้านบ่อ'] },
-            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลหญิง รุ่น (- 44 กก.) มากกว่า 42 กก. แต่ไม่เกิน 44 กก.', athletes: ['ณัฏฐวี วงษ์ชู'] },
+            { type: 'Gold', sport: 'เทควันโด', event: 'บุคคลหญิง รุ่น (- 44 กก.)', athletes: ['ณัฏฐวี วงษ์ชู'] },
             { type: 'Gold', sport: 'เทนนิส', event: 'ทีมชาย', athletes: ['คุณานันท์ พันธราธร', 'ปวรปรัชญ์ งั่นบุญศรี'] },
             { type: 'Gold', sport: 'เทนนิส', event: 'ทีมหญิง', athletes: ['โชติรินทร์ แก้วก่า', 'พิชญาภัค ศรีมุกข์', 'ศรร์วิศา กุลพิศาลรัศม์'] },
             { type: 'Gold', sport: 'เทเบิลเทนนิส', event: 'ทีมหญิง', athletes: ['ณัฏฐณิชา บัวสุวรรณ', 'พชรพร ชาญวานิชบริการ', 'มาธวี ตันติพุทธ'] },
             { type: 'Gold', sport: 'เทเบิลเทนนิส', event: 'ทีมหญิง ยุวชน', athletes: ['จิตรณดา อุ่นจิตร', 'ปัณณพรรณ ยอดสุวรรณ์', 'พัชรภรณ์ อุราพร'] },
             { type: 'Gold', sport: 'แบดมินตัน', event: 'ทีมชาย', athletes: ['คณพศ ทีวะกุล', 'ณณฐ ตระกูลสม', 'ต้นคิด แซ่เฮ้ง', 'ธนกฤต เล็กยิ้ม', 'ธีรไนย ชินอักษร', 'เพียววิรุจ สิริวรานุกูล'] },
+            { type: 'Gold', sport: 'เปตอง', event: 'Shooting บุคคลหญิง', athletes: ['ปภาดา บุญทองแก้ว'] },
+            { type: 'Gold', sport: 'มวยไทยสมัครเล่น', event: 'บุคคลหญิง รุ่น ไลท์เวท 57-60 กก.', athletes: ['พิมพิ์ลภัส ร้อยแก้ว'] },
             { type: 'Gold', sport: 'มวยปล้ำ', event: 'บุคคลหญิง ฟรีสไตล์ รุ่น ไม่เกิน 57 กก.', athletes: ['พรรษา ลูอีส เซ็ทวิค'] },
-            { type: 'Gold', sport: 'ยกน้ำหนัก', event: 'สแนทช์ - รุ่น 48 กก. - หญิง น้ำหนักตัวไม่เกิน 48 กก.', athletes: ['ดุษฎี ใบบัว'] },
+            { type: 'Gold', sport: 'ยกน้ำหนัก', event: 'สแนทช์ - รุ่น 48 กก. - หญิง', athletes: ['ดุษฎี ใบบัว'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนยาวอัดลม - บุคคลชาย', athletes: ['ภัทรศุกรีย์ ศรีวิชัย'] },
+            { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นมาตรฐาน - ทีมชาย', athletes: ['ปิยวิทย์ โพธิ์กุล', 'วชิรวิชน์ พวงทอง', 'อดิชาต ลิ้มรสสุข'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - บุคคลหญิง', athletes: ['ณัฐรดา ตอนศรี'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นอัดลม - ทีมหญิง', athletes: ['ณัฐรดา ตอนศรี', 'สุพิชญา ลักษณะพริ้ม', 'อัญชิษฐา แซ่ลิ่ม'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นอัดลมคู่ผสมชาย - หญิง', athletes: ['ณัฐรดา ตอนศรี', 'ปิยวิทย์ โพธิ์กุล'] },
+            { type: 'Gold', sport: 'ยิมนาสติก', event: 'กรุ๊ปอุปกรณ์ 5 ริบบิ้น - ทีมทั่วไป', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
+            { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ทีมหญิง COM I', athletes: ['โจโจ ทวินันท์', 'พัชญาธรณ์ หงษ์ปภา', 'เลไลยก์ ศิริธัญญะรัตน์', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - โต๊ะกระโดด - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - บาร์คู่ - ชาย', athletes: ['พีรดนย์ ชาลี'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ ทีมหญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส', 'พิมพ์โมรี โกไศยกานนท์', 'ภูภัทรา จงจิระวงศา', 'วิตา ค้าเจริญ', 'อิสสริยา สกลเสก'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกแอโรบิก ทีม 3 คน', athletes: ['กษรฤญ แก้วกนกวิจิตร', 'ชิษณุชา หนูชัยแก้ว', 'ธมลวรรณ ยะมะโน'] },
+            { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา - บุคคลรวมอุปกรณ์ - หญิง', athletes: ['สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - คานทรงตัว - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกแอโรบิก - บุคคลหญิง', athletes: ['ธมลวรรณ ยะมะโน'] },
-            { type: 'Gold', sport: 'ยูโด', event: 'บุคคลชาย รุ่น น้ำหนักเกิน 40 - 45 กก. อายุไม่เกิน 15 ปี', athletes: ['คุณธรรม ดีบ้านห้วย'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: '(โชว์ศิลปะการต่อสู้ เยาวชนไม่เกิน 18 ปี) - DUO OPEN', athletes: ['ภัทรวรรธ คำสร้อย', 'อัครเดช ปะตังเวสา'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: '(โชว์ศิลปะการต่อสู้ เยาวชนไม่เกิน 18 ปี) - SHOW OPEN', athletes: ['ภัทรวรรธ คำสร้อย', 'อัครเดช ปะตังเวสา'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 40 กก. หญิง', athletes: ['ญภา ธนประเวศน์'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 44 กก. ชาย', athletes: ['ฮาลุ ซูซูกิ'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักเกิน 63 กก.หญิง', athletes: ['กัญญาลักษณ์ เสือคำ'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 62 กก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 63 กก.หญิง', athletes: ['สิริขวัญ เอี่ยมพลอยศรี'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 69 กก. ชาย', athletes: ['ธนชา เมืองศรี'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U15 น้ำหนักไม่เกิน 44 ก.ก. ชาย', athletes: ['ฮาลุ ซูซูกิ'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U15 น้ำหนักไม่เกิน 56 ก.ก. ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักเกิน 63 ก.ก. หญิง', athletes: ['กัญญาลักษณ์ เสือคำ'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 62 ก.ก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
-            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 น้ำหนักไม่เกิน 77 ก.ก. ชาย', athletes: ['กรณภว์ แดงอินทร์'] },
-            { type: 'Gold', sport: 'เรือพาย', event: 'กรรเชียง หญิง ระยะ 1000 เมตร', athletes: ['นรมนพรรธน์ อ๋องสมหวัง'] },
+            { type: 'Gold', sport: 'ยูโด', event: 'บุคคลชาย 40-45 กก. อายุไม่เกิน 15 ปี', athletes: ['คุณธรรม ดีบ้านห้วย'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'DUO OPEN เยาวชน', athletes: ['ภัทรวรรธ คำสร้อย', 'อัครเดช ปะตังเวสา'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'SHOW OPEN เยาวชน', athletes: ['ภัทรวรรธ คำสร้อย', 'อัครเดช ปะตังเวสา'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 -40 กก. หญิง', athletes: ['ญภา ธนประเวศน์'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U15 -44 กก. ชาย', athletes: ['ฮาลุ ซูซูกิ'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 +63 กก. หญิง', athletes: ['กัญญาลักษณ์ เสือคำ'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 -62 กก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 -63 กก. หญิง', athletes: ['สิริขวัญ เอี่ยมพลอยศรี'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'FIGHTING U18 -69 กก. ชาย', athletes: ['ธนชา เมืองศรี'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U15 -44 ก.ก. ชาย', athletes: ['ฮาลุ ซูซูกิ'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U15 -56 ก.ก. ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 +63 ก.ก. หญิง', athletes: ['กัญญาลักษณ์ เสือคำ'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 -62 ก.ก. ชาย', athletes: ['เมธา ทองนิธิกานต์'] },
+            { type: 'Gold', sport: 'ยูยิตสู', event: 'JIUJITSU U18 -77 ก.ก. ชาย', athletes: ['กรณภว์ แดงอินทร์'] },
+            { type: 'Gold', sport: 'เรือพาย', event: 'กรรเชียง หญิง 1000 เมตร', athletes: ['นรมนพรรธน์ อ๋องสมหวัง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'กบ 200 เมตร - ชาย', athletes: ['ชยพล คนอยู่'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'กบ 50 เมตร - หญิง', athletes: ['ณัฐกฤตา ลีกิจจากร'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'กรรเชียง 200 เมตร - ชาย', athletes: ['นาราชา คำนนท์'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'เดี่ยวผสม 400 เมตร - หญิง', athletes: ['วริศรา นพทอง'] },
-            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดผสม Mix 4 x 100 เมตร ทีมผสม', athletes: ['กัญณภัส ศิริเรืองชานนท์', 'นาราชา คำนนท์', 'ภัทรภูมิ คำสะอาด', 'วริศรา นพทอง'] },
+            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดผสม 4 x 100 เมตร - ชาย', athletes: ['นาราชา คำนนท์', 'ภัทรภูมิ คำสะอาด', 'ศุภกร ใจกล้า', 'อาชวินทร์ สุทธิวรชัย'] },
+            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดผสม 4 x 100 เมตร - หญิง', athletes: ['ชญานิศวร์ ศิรพงศ์รักษ์', 'ณัฐกฤตา ลีกิจจากร', 'นภัค ไสยาวงศ์', 'วริศรา นพทอง'] },
+            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดผสม Mix 4 x 100 เมตร', athletes: ['กัญณภัส ศิริเรืองชานนท์', 'นาราชา คำนนท์', 'ภัทรภูมิ คำสะอาด', 'วริศรา นพทอง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดฟรีสไตล์ 4 x 100 เมตร - หญิง', athletes: ['กัญณภัส ศิริเรืองชานนท์', 'ชญานิศวร์ ศิรพงศ์รักษ์', 'พิมพ์ดาว ธาดานิติ', 'วริศรา นพทอง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผลัดฟรีสไตล์ Mix 4 x 100 เมตร', athletes: ['กตนนท์ เพชรรัตน์', 'กัญณภัส ศิริเรืองชานนท์', 'วริศรา นพทอง', 'ศุภกร ใจกล้า'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 200 เมตร - หญิง', athletes: ['วริศรา นพทอง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 400 เมตร - ชาย', athletes: ['ศุภกร ใจกล้า'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'กบ 100 เมตร - ชาย', athletes: ['ภัทรภูมิ คำสะอาด'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'กบ 100 เมตร - หญิง', athletes: ['ณัฐกฤตา ลีกิจจากร'] },
+            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'เดี่ยวผสม 200 เมตร - หญิง', athletes: ['ณัฐกฤตา ลีกิจจากร'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 100 เมตร - หญิง', athletes: ['วริศรา นพทอง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 200 เมตร - หญิง', athletes: ['วริศรา นพทอง'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 50 เมตร - หญิง', athletes: ['ชญานิศวร์ ศิรพงศ์รักษ์'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 1,500 เมตร - หญิง', athletes: ['ชานิดา ควรชม'] },
             { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 100 เมตร - หญิง', athletes: ['วริศรา นพทอง'] },
+            { type: 'Gold', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 50 เมตร - หญิง', athletes: ['พิมพ์ดาว ธาดานิติ'] },
             { type: 'Gold', sport: 'วู้ดบอล', event: 'นับจำนวนเกท ทีมชาย', athletes: ['กัปตัน จันทร์ฉาย', 'วรพจน์ เนตรพนา', 'สิงหา ช่องโก้', 'อานนท์ เพ็ชรรัตน์'] },
             { type: 'Gold', sport: 'หมากล้อม', event: 'คู่ชาย', athletes: ['กิตติพัทธ์ มาอ่อน', 'ชิษณุชา ทรัพย์ตันติกูล'] },
             { type: 'Gold', sport: 'หมากล้อม', event: 'ทีมผสม', athletes: ['จรูญศักดิ์ สารพิมพา', 'ปุณณริศ อิทธิกุลชัย', 'พิชญ์นารา จันทร์สุวรรณ์'] },
             { type: 'Gold', sport: 'หมากล้อม', event: 'บุคคลหญิง', athletes: ['ไอรัก ฟูกูฮาระ'] },
+            { type: 'Gold', sport: 'เอ็กซ์ตรีม', event: 'Inline Speed Skate 500 m. - หญิง (8-12 ปี)', athletes: ['ลภัสนันท์ เล็กสรรเสริญ'] },
+            { type: 'Gold', sport: 'เอ็กซ์ตรีม', event: 'Freestyle Classic Slalom - หญิง (8-12 ปี)', athletes: ['อชิรญา เย็นสุข'] },
+            { type: 'Gold', sport: 'ฮอกกี้', event: 'Indoor Hockey ทีมชาย', athletes: ['เกียรติศักดิ์ อาจอำนวย', 'เจษฎากร เหลี่ยมเงิน', 'ชลกร ศิริเลิศ', 'ณัฏฐากร คารวะ', 'ทิวัตถ์ เอี่ยมชู', 'ธนชัย ครองงาม', 'นราวิชญ์ บุญปั้น', 'พัชรดนัย วงษ์พรพันธุ์', 'พัทธนันท์ โลหะวิจารณ์', 'พีรดนย์ ครุธไทย', 'ภูเบศ บรรเทา', 'ศรัณย์ภัทร นามเสนา'] },
 
-            // SILVER (61 items)
+            // SILVER (74 items)
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 100 เมตร - หญิง', athletes: ['จิตรานุช แคมป์เบลล์', 'น้ำใส แตงอ่อน', 'ภัทรวดี ไชยเพชร', 'สิริยากร เจริญขำ'] },
+            { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 400 เมตร - หญิง', athletes: ['กนกอร ดงเล็ก', 'ชัชวี วัฒนะ', 'เนตรนภา คำลิ้ม', 'ศรัณยา สิงคาร'] },
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด เมดเลย์ - ชาย', athletes: ['กฤษฎา เสาะสืบ', 'ณัฐดนัย โตทรัพย์', 'นนท์บดินทร์ จีนเมือง', 'เอมัส มหากาญจนะ อังเกอร์'] },
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด เมดเลย์ - หญิง', athletes: ['กัญญาพร โสภาศรี', 'เขมวิกา ทนเถื่อน', 'จิตรานุช แคมป์เบลล์', 'สิริยากร เจริญขำ'] },
-            { type: 'Silver', sport: 'คาราเต้', event: 'ท่ารำบุคคลชาย รุ่นอายุ 14 - 18 ปี', athletes: ['พีชายุทธ อ่างมณีกุล'] },
-            { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลชาย รุ่น (- 55 กก.) อายุ 16-18 ปี', athletes: ['พีรพัฒน์ แก้วใสย์'] },
-            { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลหญิง รุ่น (- 48 กก.) อายุ 16-18 ปี', athletes: ['นันทณัฎฐ์ ชุ่มวงศ์'] },
+            { type: 'Silver', sport: 'คาราเต้', event: 'ท่ารำบุคคลชาย 14 - 18 ปี', athletes: ['พีชายุทธ อ่างมณีกุล'] },
+            { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลชาย -55 กก. 16-18 ปี', athletes: ['พีรพัฒน์ แก้วใสย์'] },
+            { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลหญิง -48 กก. 16-18 ปี', athletes: ['นันทณัฎฐ์ ชุ่มวงศ์'] },
             { type: 'Silver', sport: 'จักรยาน', event: 'BMX บุคคลหญิง', athletes: ['อนัญญา จารุเพ็ง'] },
-            { type: 'Silver', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ธัญชนก จินาภิรมย์'] },
-            { type: 'Silver', sport: 'เจ็ตสกี', event: 'Runabout 1,000 8 - 12 ปี ชาย/หญิง', athletes: ['กัณภณฑ์ เพ็ชรคูเวียง'] },
+            { type: 'Silver', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง', athletes: ['ธัญชนก จินาภิรมย์'] },
+            { type: 'Silver', sport: 'เจ็ตสกี', event: 'Runabout 1,000 13 - 18 ปี หญิง', athletes: ['พริ้มรส คุณสา'] },
+            { type: 'Silver', sport: 'เจ็ตสกี', event: 'Runabout 1,000 ยุวชน', athletes: ['กัณภณฑ์ เพ็ชรคูเวียง'] },
             { type: 'Silver', sport: 'ชักกะเย่อ', event: 'ทีมหญิง 8 คน', athletes: ['กชพร ซีโตห์', 'จามิกร ชูบุญ', 'ปลายฟ้า ผกากรอง', 'เพ็ญพิชชา ทันตะขบ', 'สุชัญญา สีสุเมฆ', 'อริสา นาคพันธ์', 'อรุณวรรณ ไกรแก้ว', 'อารยา สาลี'] },
             { type: 'Silver', sport: 'ซอฟท์เทนนิส', event: 'คู่ผสม', athletes: ['ธัญพิชชา สมสนิท', 'รวิพล ขวัญจันทร์'] },
             { type: 'Silver', sport: 'ซอฟท์เทนนิส', event: 'บุคคลหญิง', athletes: ['อลิชา มายา ชีกเลอร์'] },
             { type: 'Silver', sport: 'เซปักตะกร้อ', event: 'ชายคู่', athletes: ['ธนพล โพธิราช', 'ปัณณวัฒน์ ทอนศรี', 'รุจิภาส ทองยิ่ง'] },
-            { type: 'Silver', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท รุ่น (- 33 กก.)', athletes: ['ธวัชชัย ทัดทอง'] },
-            { type: 'Silver', sport: 'เทควันโด', event: 'บุคคลหญิง รุ่น (+ 68 กก. ขึ้นไป)', athletes: ['อิสรีย์ แสงดอก'] },
-            { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ (Poomsae) คู่ผสม', athletes: ['นิธิกร ยิ้มประเสริฐ', 'สุชานันท์ อินทร์แจ้ง'] },
-            { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ (Poomsae) ทีมหญิง', athletes: ['กัญญาพัชร ไหมเจริญ', 'เพชรพราว เพชรภู่', 'ภริทภร ณ บางช้าง'] },
+            { type: 'Silver', sport: 'เทควันโด', event: 'บุคคลชาย ต่อสู้คาเด็ท -33 กก.', athletes: ['ธวัชชัย ทัดทอง'] },
+            { type: 'Silver', sport: 'เทควันโด', event: 'บุคคลหญิง +68 กก. ขึ้นไป', athletes: ['อิสรีย์ แสงดอก'] },
+            { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ คู่ผสม', athletes: ['นิธิกร ยิ้มประเสริฐ', 'สุชานันท์ อินทร์แจ้ง'] },
+            { type: 'Silver', sport: 'เทควันโด', event: 'พุมเซ่ ทีมหญิง', athletes: ['กัญญาพัชร ไหมเจริญ', 'เพชรพราว เพชรภู่', 'ภริทภร ณ บางช้าง'] },
             { type: 'Silver', sport: 'เทเบิลเทนนิส', event: 'ทีมชาย', athletes: ['คชธร เที่ยงตระกูล', 'สราวุธ สังขรัตน์', 'เอกภพ คงศักดิ์ศรีสกุล'] },
             { type: 'Silver', sport: 'เทเบิลเทนนิส', event: 'ทีมชาย ยุวชน', athletes: ['ปวริศร์ ทองหล่อ', 'อทิตธรณ์ ธีรกิดากร'] },
             { type: 'Silver', sport: 'แบดมินตัน', event: 'ทีมหญิง', athletes: ['กิตติญา ไกรธีรวุฒิ', 'ณัฐพัชร์ บุญสัมพุทธ', 'นันท์นภัส ฮาดวิเศษ', 'ลดา ณ นคร', 'สุรดา เวชพาณิชย์', 'อภิชยา วรรณศุภผล'] },
-            { type: 'Silver', sport: 'มวยปล้ำ', event: 'บุคคลชาย ฟรีสไตล์ รุ่น ไม่เกิน 71 กก.', athletes: ['พีรพล ชิรัมย์'] },
+            { type: 'Silver', sport: 'มวยปล้ำ', event: 'บุคคลชาย ฟรีสไตล์ -71 กก.', athletes: ['พีรพล ชิรัมย์'] },
             { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'คลีนแอนด์เจอร์ค 48 กก. หญิง', athletes: ['ดุษฎี ใบบัว'] },
+            { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'คลีนแอนด์เจอร์ค 63 กก. หญิง', athletes: ['ฐิตาพร ตีกา'] },
             { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'น้ำหนักรวม 48 กก. หญิง', athletes: ['ดุษฎี ใบบัว'] },
+            { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'น้ำหนักรวม 63 กก. หญิง', athletes: ['ฐิตาพร ตีกา'] },
+            { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'สแนทช์ 63 กก. หญิง', athletes: ['ฐิตาพร ตีกา'] },
             { type: 'Silver', sport: 'ยกน้ำหนัก', event: 'สแนทช์ 53 กก. หญิง', athletes: ['พนิดา เด่นดวง'] },
+            { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนยาว 3 ท่า - บุคคลชาย', athletes: ['ภัทรศุกรีย์ ศรีวิชัย'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนยาวท่านอน - บุคคลชาย', athletes: ['ภัทรศุกรีย์ ศรีวิชัย'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นมาตรฐาน - ทีมหญิง', athletes: ['เจย์ โสภณ', 'ณัฐรดา ตอนศรี', 'อภิชญา โฆสานันท์'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - ทีมหญิง', athletes: ['เจย์ โสภณ', 'ณัฏฐ์ฐนิพา พูลเจริญ', 'ณัฐรดา ตอนศรี'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - บุคคลหญิง', athletes: ['เจย์ โสภณ'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นมาตรฐาน - บุคคลหญิง', athletes: ['ณัฐรดา ตอนศรี'] },
-            { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ประเภทกรุ๊ป COM I หญิง', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
+            { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ประเภทกรุ๊ป COM I', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกแอโรบิก - คู่ผสม', athletes: ['ชณิดาภา เรณางกูร', 'พอพิสุทธิ์ ศรีคันธะรักษ์'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกแอโรบิก - บุคคลชาย', athletes: ['พอพิสุทธิ์ ศรีคันธะรักษ์'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ - บาร์ต่างระดับ - หญิง', athletes: ['ภูภัทรา จงจิระวงศา'] },
-            { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ประเภทบุคคลรวมอุปกรณ์ หญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส'] },
+            { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกศิลป์ประเภทบุคคลรวมอุปกรณ์', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส'] },
+            { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา - บุคคลรวมอุปกรณ์', athletes: ['โจโจ ทวินันท์'] },
             { type: 'Silver', sport: 'ยูโด', event: 'ท่าทุ่มมาตรฐาน (Ju-No-Kata)', athletes: ['ธนพร เกษมศรี', 'ปุญญิศา วสุรักษ์พงศ์'] },
-            { type: 'Silver', sport: 'ยูโด', event: 'บุคคลชาย รุ่น น้ำหนักเกิน 50 - 55 กก.', athletes: ['ปูริ ภูปราง'] },
+            { type: 'Silver', sport: 'ยูโด', event: 'บุคคลชาย 50-55 กก. ยุวชน', athletes: ['ปูริ ภูปราง'] },
+            { type: 'Silver', sport: 'ยูโด', event: 'บุคคลชาย 55-60 กก.', athletes: ['ธนโชติ แก้วสมุทร์'] },
             { type: 'Silver', sport: 'ยูยิตสู', event: 'DUO OPEN ยุวชน', athletes: ['สุวภัทร เอี่ยมพลอยศรี', 'หฤษฏ์ เกษตรภิบาล'] },
             { type: 'Silver', sport: 'ยูยิตสู', event: 'SHOW OPEN ยุวชน', athletes: ['สุวภัทร เอี่ยมพลอยศรี', 'หฤษฏ์ เกษตรภิบาล'] },
             { type: 'Silver', sport: 'ยูยิตสู', event: 'FIGHTING U15 -44 กก. หญิง', athletes: ['กฤติญา ช่วยเกิด'] },
@@ -245,7 +243,8 @@
             { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 -52 ก.ก. หญิง', athletes: ['บุริศรารัตน์ จันทะนาข่า'] },
             { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 -56 ก.ก. ชาย', athletes: ['จาฏวัตร กังวล'] },
             { type: 'Silver', sport: 'ยูยิตสู', event: 'JIUJITSU U18 -63 ก.ก. หญิง', athletes: ['สิริขวัญ เอี่ยมพลอยศรี'] },
-            { type: 'Silver', sport: 'เรือพาย', event: 'แคนู 1 คน ชาย (K1) 500 ม.', athletes: ['เวชศัลย์ อนันตวิเชียร'] },
+            { type: 'Silver', sport: 'รักบี้ฟุตบอล', event: 'ประเภท 7 คน - ทีมชาย', athletes: ['กฤตธีรเดช ธิกะ', 'ฆงภภพ ชาญนำสิน', 'จาตุรนต์ น้อยใจรักษ์', 'จิรกร นำไพศาล', 'ชยนันต์ ชยสิกานนท์', 'ชยพล มุตตามระ', 'ฐกร ภานุรุจพงศ์', 'ธนภัทร เชิดชู สหัสรจินดา', 'พงศกร ชูสิทธิ์', 'พรมงคล กิตติชัยสมบัติ', 'ภัทรภณ หรุ่นบรรจบ', 'เมธา สุกุลธนาศร', 'อาชวิน แสงวรรณ', 'เอื้ออังกูร อิ่มศูนย์'] },
+            { type: 'Silver', sport: 'เรือพาย', event: 'แคนู 1 คน ชาย 500 เมตร', athletes: ['เวชศัลย์ อนันตวิเชียร'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 100 เมตร - ชาย', athletes: ['นาราชา คำนนท์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 100 เมตร - หญิง', athletes: ['นภัค ไสยาวงศ์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 50 เมตร - หญิง', athletes: ['กัญณภัส ศิริเรืองชานนท์'] },
@@ -255,43 +254,56 @@
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 100 เมตร - หญิง', athletes: ['ชญานิศวร์ ศิรพงศ์รักษ์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 200 เมตร - หญิง', athletes: ['ชนม์พัศนภ ชาติวุฒิ'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 50 เมตร - หญิง', athletes: ['วิชิตา เกษมณี'] },
+            { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 1,500 เมตร - ชาย', athletes: ['นิธิศ สิริสุวรรณกิจ'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 200 เมตร - ชาย', athletes: ['ศุภกร ใจกล้า'] },
+            { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 50 เมตร - หญิง', athletes: ['ชญานิศวร์ ศิรพงศ์รักษ์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กบ 200 เมตร - หญิง', athletes: ['กัญญาภัค รินทร'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 200 เมตร - หญิง', athletes: ['นภัค ไสยาวงศ์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 50 เมตร - ชาย', athletes: ['นาราชา คำนนท์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 200 เมตร - ชาย', athletes: ['ปาณัสม์ มั่นพุทธคุณ'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 800 เมตร - หญิง', athletes: ['ชานิดา ควรชม'] },
             { type: 'Silver', sport: 'หมากล้อม', event: 'คู่ผสม', athletes: ['โชคภูมิชัย อาจกำชัย', 'ไอรัก ฟูกูฮาระ'] },
+            { type: 'Silver', sport: 'เอ็กซ์ตรีม', event: 'Freestyle Pair Slalom', athletes: ['อชิรญา เย็นสุข', 'อภิชยา เย็นสุข'] },
+            { type: 'Silver', sport: 'เอ็กซ์ตรีม', event: 'Inline Speed Skate 500 m. - หญิง', athletes: ['กุลรดา สวนแย้ม'] },
 
-            // BRONZE (71 items)
+            // BRONZE (86 items)
             { type: 'Bronze', sport: 'กรีฑา', event: 'กระโดดค้ำ - หญิง', athletes: ['รมิดา วิศวพรสุนทร'] },
             { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่ง 400 เมตร - ชาย', athletes: ['เอมัส มหากาญจนะ อังเกอร์'] },
             { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่ง 5, 000 เมตร - ชาย', athletes: ['ภัทรดนัย ถนอมดำรงค์ศักดิ์'] },
             { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่งข้ามรั้ว 100 เมตร - หญิง', athletes: ['ภัทรวดี ไชยเพชร'] },
-            { type: 'Bronze', sport: 'คาราเต้', event: 'ท่ารำทีมชาย รุ่นอายุ 9 - 13 ปี', athletes: ['ชวินทร์ อนุสนธิ์อดิสัย', 'พัฒน์ภาม เพชรเพริศ', 'ภามพัฒน์ เพชรเพริศ', 'รชานนท์ ธนสุนทรกูร'] },
+            { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 400 เมตร - ชาย', athletes: ['กฤษฎา เสาะสืบ', 'ภูมิศักดิ์ คำภูแสน', 'วัชรพล แปงสมัย', 'เอมัส มหากาญจนะ อังเกอร์'] },
+            { type: 'Bronze', sport: 'คาราเต้', event: 'ท่ารำทีมชาย ยุวชน', athletes: ['ชวินทร์ อนุสนธิ์อดิสัย', 'พัฒน์ภาม เพชรเพริศ', 'ภามพัฒน์ เพชรเพริศ', 'รชานนท์ ธนสุนทรกูร'] },
             { type: 'Bronze', sport: 'คาราเต้', event: 'ทีมหญิง (3+1) 15-18 ปี', athletes: ['ทักษพร รอดบุญช่วย', 'นันทณัฎฐ์ ชุ่มวงศ์', 'ปรัชญาภรณ์ อรรคฮาต', 'เพชรลดา คล้ายพันธ์'] },
-            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลชาย รุ่น (+ 57 กก.)', athletes: ['กันต์พัฒน์ เดชาจุตินันท์'] },
-            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง (+ 53 กก.)', athletes: ['สุภชาดา เตรณานนท์'] },
-            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง รุ่น (- 54 กก.)', athletes: ['ปรัชญาภรณ์ อรรคฮาต'] },
-            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง รุ่น (+ 54 กก.)', athletes: ['ทักษพร รอดบุญช่วย'] },
+            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลชาย +57 กก. 14-15 ปี', athletes: ['กันต์พัฒน์ เดชาจุตินันท์'] },
+            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง +53 กก. 16-18 ปี', athletes: ['สุภชาดา เตรณานนท์'] },
+            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง -54 กก. 14-15 ปี', athletes: ['ปรัชญาภรณ์ อรรคฮาต'] },
+            { type: 'Bronze', sport: 'คาราเต้', event: 'บุคคลหญิง +54 กก. 14-15 ปี', athletes: ['ทักษพร รอดบุญช่วย'] },
             { type: 'Bronze', sport: 'จักรยาน', event: 'BMX บุคคลหญิง', athletes: ['กรกนก สร้อยวัน'] },
             { type: 'Bronze', sport: 'จักรยาน', event: 'ดาวน์ฮิลล์ หญิง', athletes: ['ณํฐธยาน์ ภู่เกตุ'] },
-            { type: 'Bronze', sport: 'เจ็ตสกี', event: 'Runabout 1,000 13 - 15 ปี ชาย', athletes: ['ณัฐกิตติ์ สุริยอธิวัชร์'] },
+            { type: 'Bronze', sport: 'จักรยาน', event: 'ลู่ ไทม์ไทรอัล - ชาย', athletes: ['สิรวิชญ์ แสนใส'] },
+            { type: 'Bronze', sport: 'เจ็ตสกี', event: 'Runabout 1,000 13-15 ปี', athletes: ['ณัฐกิตติ์ สุริยอธิวัชร์'] },
+            { type: 'Bronze', sport: 'เจ็ตสกี', event: 'Ski 1500 Standard 16-18 ปี', athletes: ['ณัฐนันท์ กีนะพันธ์'] },
             { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'ชายคู่', athletes: ['พัทธดนย์ ไลอ้อน', 'รวิพล ขวัญจันทร์'] },
             { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'ทีมชาย', athletes: ['ชัชฌานนท์ บรรจงศิริ', 'ธรณินทร์ เจียมกาย', 'พัทธดนย์ ไลอ้อน', 'รวิพล ขวัญจันทร์', 'วิธวินท์ สุวรรณมณี'] },
             { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'บุคคลชาย', athletes: ['พัทธดนย์ ไลอ้อน'] },
             { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'ทีมเดี่ยว - ชาย', athletes: ['ปฏิภานต์ ปรีชา', 'พลาธิป ทองห่อ', 'วรัญญู ไตรถิ่น', 'วิชชากร ศรีปาน', 'สิทธิพร ภูผาผุด'] },
             { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'หญิงคู่', athletes: ['พีรดา ณ หนองคาย', 'วริยา การรินทร์', 'วิชญาดา สีต่างคำ'] },
             { type: 'Bronze', sport: 'เทควันโด', event: 'คู่ผสม ฟรีสไตล์ พุมเซ่', athletes: ['ภริทภร ณ บางช้าง', 'รชต อารมย์สุขโข'] },
-            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 48 กก.)', athletes: ['สุวชัช สายสมบัติ'] },
-            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลชาย รุ่น (- 78 กก.)', athletes: ['อินทัช วงษ์รักไทย'] },
-            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลหญิง คาเด็ท (- 47 กก.)', athletes: ['ลัลน์ลภัส นวลอนงค์'] },
-            { type: 'Bronze', sport: 'ปันจักสีลัต', event: 'ปันจักลีลา คู่ชาย', athletes: ['สรทรรศน์ พัดลม', 'สุดปฐพี น้ำฝน'] },
+            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลชาย -48 กก.', athletes: ['สุวชัช สายสมบัติ'] },
+            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลชาย -78 กก.', athletes: ['อินทัช วงษ์รักไทย'] },
+            { type: 'Bronze', sport: 'เทควันโด', event: 'บุคคลหญิง คาเด็ท -47 กก.', athletes: ['ลัลน์ลภัส นวลอนงค์'] },
+            { type: 'Bronze', sport: 'เทนนิส', event: 'บุคคลชาย', athletes: ['ณภัทร พัฒนเลิศพันธ์'] },
+            { type: 'Bronze', sport: 'ปันจักสีลัต', event: 'ลีลา คู่ชาย', athletes: ['สรทรรศน์ พัดลม', 'สุดปฐพี น้ำฝน'] },
+            { type: 'Bronze', sport: 'เปตอง', event: 'Shooting บุคคลชาย', athletes: ['กิตติทร จิตต์ประสงค์'] },
             { type: 'Bronze', sport: 'เปตอง', event: 'หญิงคู่', athletes: ['ปราณัสมา บัวเจริญ', 'ปัทมพร พิมโย', 'พิมพ์มาดา อภิรัชนากุล'] },
-            { type: 'Bronze', sport: 'มวยปล้ำ', event: 'ชาย เกรกโกร - โรมัน -71', athletes: ['ธนพนธ์ อินทอง'] },
+            { type: 'Bronze', sport: 'ฟุตบอล', event: 'ทีมหญิง', athletes: ['กิตติมา เกตุทอง', 'จิราภรณ์ ป้อมบุบผา', 'ชาลิสา ดิษฐ์เชยเดช', 'ฌาณิศา หมอนอิง', 'ญาดาวดี สนธ์น้อย', 'ณปภัสร ทองมาลา', 'ณัฐริกา ช่อจันทร์', 'ธณัญธร วิชา', 'บุษกร วันทองสุข', 'ปพิชญา กระจ่างแสง', 'ปาริฉัตร จันทร์แก้ว', 'พรนภัส พลับใหญ่', 'พลอยพรรณี ภูสกุล', 'พัชลิตา แสนสิ่ง', 'พิมพ์ลภัส อี้วงค์', 'ภณิดา ภูชื้นสี', 'ภิญญาพัชญ์ กลิ่นคล้าย', 'มาติกา ท่าพริก', 'อชิรญาณ์ ชูชาติ', 'อินทิรา แผงนาวิน'] },
+            { type: 'Bronze', sport: 'มวยปล้ำ', event: 'ชาย เกรกโกร-โรมัน -71', athletes: ['ธนพนธ์ อินทอง'] },
             { type: 'Bronze', sport: 'มวยปล้ำ', event: 'ชาย ฟรีสไตล์ -48', athletes: ['วันชนะ เหลือมหล่อ'] },
             { type: 'Bronze', sport: 'มวยปล้ำ', event: 'ชาย ฟรีสไตล์ -60', athletes: ['ลิขิต สิงห์เนตรนอก'] },
             { type: 'Bronze', sport: 'มวยปล้ำ', event: 'ชาย ฟรีสไตล์ -65', athletes: ['อนุชา กันเฉย'] },
+            { type: 'Bronze', sport: 'มวยสากลสมัครเล่น', event: 'หญิง -45 กก.', athletes: ['ณัฐณิชา สุนทรอินทร์'] },
+            { type: 'Bronze', sport: 'มวยสากลสมัครเล่น', event: 'หญิง -51 กก.', athletes: ['ปราณปรียา จันดี'] },
+            { type: 'Bronze', sport: 'มวยสากลสมัครเล่น', event: 'หญิง -48 กก.', athletes: ['มุกมณี ทองประทับ'] },
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Clean & Jerk 53 หญิง', athletes: ['เจล่า พนาวิวัฒนาการ'] },
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Clean & Jerk 71 ชาย', athletes: ['ดนัยเทพ กุลชัยอนันต์'] },
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Total 53 หญิง', athletes: ['เจล่า พนาวิวัฒนาการ'] },
@@ -301,6 +313,8 @@
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Clean & Jerk 48 หญิง', athletes: ['พัทรวดี ขุนบุรี'] },
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Total 48 หญิง', athletes: ['พัทรวดี ขุนบุรี'] },
             { type: 'Bronze', sport: 'ยกน้ำหนัก', event: 'Snatch 48 หญิง', athletes: ['พัทรวดี ขุนบุรี'] },
+            { type: 'Bronze', sport: 'ยิงปืน', event: 'ปืนสั้นมาตรฐาน - ชาย', athletes: ['ปิยวิทย์ โพธิ์กุล'] },
+            { type: 'Bronze', sport: 'ยิมนาสติก', event: 'กรุ๊ปอุปกรณ์ 5 บอล', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'บาร์ต่างระดับ หญิง', athletes: ['วิตา ค้าเจริญ'] },
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ฟลอร์เอ็กเซอร์ไซส์ หญิง', athletes: ['ณัฐณิชา วงษ์สินธุ์วิเสส'] },
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'ฟลอร์เอ็กเซอร์ไซส์ ชาย', athletes: ['พีรดนย์ ชาลี'] },
@@ -308,7 +322,8 @@
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'แอโรบิกคู่ผสม', athletes: ['พีรวิชญ์ ประเสริฐศรี', 'อนันตญา ตายี่จัน'] },
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'แอโรบิกบุคคลชาย', athletes: ['พีรวิชญ์ ประเสริฐศรี'] },
             { type: 'Bronze', sport: 'ยิมนาสติก', event: 'แอโรบิกทีม 3 คน', athletes: ['น้ำนา ชาติพงศ์', 'พัณณ์ณิน วิทยาวงศรุจิ', 'ภคมน เหมอยู่'] },
-            { type: 'Bronze', sport: 'ยูโด', event: 'Nage-NO-Kata ชาย', athletes: ['ภาคิน พูนสะผล', 'อชิระ พูนสะผล'] },
+            { type: 'Bronze', sport: 'ยูโด', event: 'Nage-NO-Kata', athletes: ['ภาคิน พูนสะผล', 'อชิระ พูนสะผล'] },
+            { type: 'Bronze', sport: 'ยูโด', event: 'บุคคลชาย -55 กก.', athletes: ['ธนกร แซ่หลิ่ม'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'Fighting U15 -52 ชาย', athletes: ['จิรัฎฐ์ รัตนฉวี'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'Fighting U15 -56 ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'Fighting U18 -57 หญิง', athletes: ['ธนยา พรศักดิ์ประเสริฐ'] },
@@ -323,18 +338,21 @@
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'Jiujitsu U18 -69 ชาย', athletes: ['ธนชา เมืองศรี'] },
             { type: 'Bronze', sport: 'เรือพาย', event: 'กรรเชียงชาย 1000 ม.', athletes: ['คเณศร อามาตย์'] },
             { type: 'Bronze', sport: 'เรือพาย', event: 'กรรเชียงยุวชนชาย 500 ม.', athletes: ['พฤกษ์ภิรมย์ ทองคลี่'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 100 หญิง', athletes: ['อันดมัน แซ่เขา'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 200 หญิง', athletes: ['ณัฐกฤตา ลีกิจจากร'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กรรเชียง 200 หญิง', athletes: ['พรปวีณ์ ตั๊งสมบุญ'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 200 ชาย', athletes: ['นิธิศ สิริสุวรรณกิจ'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 50 ชาย', athletes: ['กตนนท์ เพชรรัตน์'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 800 ชาย', athletes: ['ณัชญ์ ธันยานุกุล'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 200 ชาย', athletes: ['ภัทรภูมิ คำสะอาด'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'เดี่ยวผสม 200 ชาย', athletes: ['ศุภกร ใจกล้า'] },
-            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 200 หญิง', athletes: ['ชานิดา ควรชม'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 100 เมตร หญิง', athletes: ['อันดมัน แซ่เขา'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 200 เมตร หญิง', athletes: ['ณัฐกฤตา ลีกิจจากร'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กรรเชียง 200 เมตร หญิง', athletes: ['พรปวีณ์ ตั๊งสมบุญ'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'เดี่ยวผสม 200 เมตร หญิง', athletes: ['วริศรา นพทอง'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ผีเสื้อ 200 เมตร ชาย', athletes: ['นิธิศ สิริสุวรรณกิจ'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 50 เมตร ชาย', athletes: ['กตนนท์ เพชรรัตน์'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 800 เมตร ชาย', athletes: ['ณัชญ์ ธันยานุกุล'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'กบ 200 เมตร ชาย', athletes: ['ภัทรภูมิ คำสะอาด'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'เดี่ยวผสม 200 เมตร ชาย', athletes: ['ศุภกร ใจกล้า'] },
+            { type: 'Bronze', sport: 'ว่ายน้ำ', event: 'ฟรีสไตล์ 200 เมตร หญิง', athletes: ['ชานิดา ควรชม'] },
             { type: 'Bronze', sport: 'วู้ดบอล', event: 'นับจำนวนเกท ทีมหญิง', athletes: ['จารุวรรณ คำลีมัด', 'ธนพร ทีอุทิศ', 'ปิยธิดา ฤทธิ์ไธสง', 'สุทธิกานต์ สิงหา'] },
             { type: 'Bronze', sport: 'หมากล้อม', event: 'คู่หญิง', athletes: ['ณฐารินทร์ ศรีโคตรโพธิ์', 'พิมมาดา ศรีสุข'] },
-            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Point & Elimination ชาย', athletes: ['อรรถวิทย์ อินทรประเสริฐ'] }
+            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Classic Slalom หญิง', athletes: ['อภิชยา เย็นสุข'] },
+            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Point & Elimination ชาย', athletes: ['อรรถวิทย์ อินทรประเสริฐ'] },
+            { type: 'Bronze', sport: 'ฮอกกี้', event: 'Indoor Hockey ทีมหญิง', athletes: ['กุลรดา แก้วชำนาญ', 'ทักษอร งามชื่น', 'ธัญพิชชา จงพิพัฒนศิริ', 'ธีร์จุฑา ปฐมฌาณะสกุล', 'บุณณ์ญาณ์ ชวลิตนันทพร', 'ปฐมารัตน์ ชวลิตนันทพร', 'ปภาวรินทร์ ภูไทวัฒนา', 'พชรมน ภู่พิชิต', 'พริมา รุ่งพรทวีวัฒน์', 'พิมรดา งามชื่น', 'วิสาขา กองฟู', 'อัยรินทร์ ลิมบานเย็น'] }
         ];
 
         let searchTerm = '';

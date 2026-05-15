@@ -58,17 +58,36 @@
                 </div>
             </div>
 
+            <!-- Search and Filter Bar Updated -->
             <div class="flex flex-col md:flex-row gap-3 mb-6">
+                <!-- Search Input -->
                 <div class="flex-1 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3">
                     <i data-lucide="search" class="text-slate-400 w-5 h-5 shrink-0"></i>
-                    <input id="search-input" type="text" placeholder="ค้นหาชื่อนักกีฬา, กีฬา หรือรายการ..." class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none" />
+                    <input id="search-input" type="text" placeholder="ค้นหาชื่อนักกีฬา, ชนิดกีฬา หรือรายการ..." class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none" />
                 </div>
-                <div class="md:w-64 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3 relative">
-                    <i data-lucide="filter" class="text-emerald-600 w-5 h-5 shrink-0"></i>
-                    <select id="sport-select" class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none cursor-pointer pr-8 font-medium">
-                        <option value="All">แสดงกีฬาทั้งหมด</option>
-                    </select>
-                    <i data-lucide="chevron-down" class="text-slate-400 w-4 h-4 shrink-0 absolute right-4 pointer-events-none"></i>
+                
+                <!-- Filter Dropdowns Wrapper -->
+                <div class="flex gap-3">
+                    <!-- Sport Filter -->
+                    <div class="w-1/2 md:w-48 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3 relative">
+                        <i data-lucide="filter" class="text-emerald-600 w-5 h-5 shrink-0"></i>
+                        <select id="sport-select" class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none cursor-pointer pr-6 font-medium">
+                            <option value="All">ทุกชนิดกีฬา</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="text-slate-400 w-4 h-4 shrink-0 absolute right-3 pointer-events-none"></i>
+                    </div>
+
+                    <!-- Medal Filter -->
+                    <div class="w-1/2 md:w-48 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3 relative">
+                        <i data-lucide="award" class="text-amber-500 w-5 h-5 shrink-0"></i>
+                        <select id="medal-select" class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none cursor-pointer pr-6 font-medium">
+                            <option value="All">ทุกเหรียญ</option>
+                            <option value="Gold">เหรียญทอง</option>
+                            <option value="Silver">เหรียญเงิน</option>
+                            <option value="Bronze">เหรียญทองแดง</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="text-slate-400 w-4 h-4 shrink-0 absolute right-3 pointer-events-none"></i>
+                    </div>
                 </div>
             </div>
 
@@ -208,7 +227,7 @@
             { type: 'Gold', sport: 'เอ็กซ์ตรีม', event: 'Freestyle Slide - บุคคลหญิง', athletes: ['ภิญญาพัชญ์ หมันมณี'] },
             { type: 'Gold', sport: 'ฮอกกี้', event: 'ในร่ม Indoor Hockey ทีมชาย', athletes: ['เกียรติศักดิ์ อาจอำนวย', 'เจษฎากร เหลี่ยมเงิน', 'ชลกร ศิริเลิศ', 'ณัฏฐากร คารวะ', 'ทิวัตถ์ เอี่ยมชู', 'ธนชัย ครองงาม', 'นราวิชญ์ บุญปั้น', 'พัชรดนัย วงษ์พรพันธุ์', 'พัทธนันท์ โลหะวิจารณ์', 'พีรดนย์ ครุธไทย', 'ภูเบศ บรรเทา', 'ศรัณย์ภัทร นามเสนา'] },
 
-            // SILVER (86)
+            // SILVER (83)
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 100 เมตร - หญิง', athletes: ['จิตรานุช แคมป์เบลล์', 'น้ำใส แตงอ่อน', 'ภัทรวดี ไชยเพชร', 'สิริยากร เจริญขำ'] },
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด 4 x 400 เมตร - หญิง', athletes: ['กนกอร ดงเล็ก', 'ชัชวี วัฒนะ', 'เนตรนภา คำลิ้ม', 'ศรัณยา สิงคาร'] },
             { type: 'Silver', sport: 'กรีฑา', event: 'วิ่งผลัด เมดเลย์ - ชาย', athletes: ['กฤษฎา เสาะสืบ', 'ณัฐดนัย โตทรัพย์', 'นนท์บดินทร์ จีนเมือง', 'เอมัส มหากาญจนะ อังเกอร์'] },
@@ -274,7 +293,7 @@
             { type: 'Silver', sport: 'รักบี้ฟุตบอล', event: 'ประเภท 7 คน - ทีมชาย', athletes: ['กฤตธีรเดช ธิกะ', 'ฆงภภพ ชาญนำสิน', 'จาตุรนต์ น้อยใจรักษ์', 'จิรกร นำไพศาล', 'ชยนันต์ ชยสิกานนท์', 'ชยพล มุตตามระ', 'ฐกร ภานุรุจพงศ์', 'ธนภัทร เชิดชู สหัสรจินดา', 'พงศกร ชูสิทธิ์', 'พรมงคล กิตติชัยสมบัติ', 'ภัทรภณ หรุ่นบรรจบ', 'เมธา สุกุลธนาศร', 'อาชวิน แสงวรรณ', 'เอื้ออังกูร อิ่มศูนย์'] },
             { type: 'Silver', sport: 'เรือพาย', event: 'แคนู 1 คน ชาย (K1) ระยะ 500 เมตร', athletes: ['เวชศัลย์ อนันตวิเชียร'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 100 เมตร - ชาย', athletes: ['นาราชา คำนนท์'] },
-            { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 100 เมตร - หญิง', athletes: ['นภั ไสยาวงศ์'] },
+            { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 100 เมตร - หญิง', athletes: ['นภัค ไสยาวงศ์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'กรรเชียง 50 เมตร - หญิง', athletes: ['กัญณภัส ศิริเรืองชานนท์'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผลัดฟรีสไตล์ 4 x 100 เมตร - ชาย', athletes: ['กตนนท์ เพชรรัตน์', 'ณัฐภูมิ ตั้งกิติกุล', 'ศุภกร ใจกล้า', 'อาชวินทร์ สุทธิวรชัย'] },
             { type: 'Silver', sport: 'ว่ายน้ำ', event: 'ผลัดฟรีสไตล์ 4 x 200 เมตร - ชาย', athletes: ['ณัชญ์ ธันยานุกุล', 'นิธิศ สิริสุวรรณกิจ', 'ภัทรภูมิ คำสะอาด', 'ศุภกร ใจกล้า'] },
@@ -296,7 +315,7 @@
             { type: 'Silver', sport: 'เอ็กซ์ตรีม', event: 'Inline Speed Skate 500 m. - บุคคลหญิง (อายุ 13-20 ปี)', athletes: ['กุลรดา สวนแย้ม'] },
             { type: 'Silver', sport: 'เอ็กซ์ตรีม', event: 'Freestyle Slide - บุคคลหญิง', athletes: ['ปวิชญา อารัณย์รักษ์'] },
 
-            // BRONZE (101)
+            // BRONZE (95)
             { type: 'Bronze', sport: 'กรีฑา', event: 'กระโดดค้ำ - หญิง', athletes: ['รมิดา วิศวพรสุนทร'] },
             { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่ง 400 เมตร - ชาย', athletes: ['เอมัส มหากาญจนะ อังเกอร์'] },
             { type: 'Bronze', sport: 'กรีฑา', event: 'วิ่ง 5, 000 เมตร - ชาย', athletes: ['ภัทรดนัย ถนอมดำรงค์ศักดิ์'] },
@@ -370,7 +389,7 @@
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 52 กก. ชาย', athletes: ['จิรัฎฐ์ รัตนฉวี'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U15 น้ำหนักไม่เกิน 56 กก. ชาย', athletes: ['กฤติเดช คเชนคำแหง'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 57 กก. หญิง', athletes: ['ธนยา พรศักดิ์ประเสริฐ'] },
-            { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 52 กก. หญิง', athletes: ['บุริศรารัตน์ จันทะนาข่า'] },
+            { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 52 ก.ก. หญิง', athletes: ['บุริศรารัตน์ จันทะนาข่า'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'FIGHTING U18 น้ำหนักไม่เกิน 77 กก. ชาย', athletes: ['กรณภว์ แดงอินทร์'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U15 น้ำหนักไม่เกิน 36 ก.ก. หญิง', athletes: ['เฌอณพัชญ์ สิทธิสินธนชัย'] },
             { type: 'Bronze', sport: 'ยูยิตสู', event: 'JIUJITSU U15 น้ำหนักไม่เกิน 40 ก.ก. หญิง', athletes: ['ญภา ธนประเวศน์'] },
@@ -402,9 +421,11 @@
 
         let searchTerm = '';
         let selectedSport = 'All';
+        let selectedMedal = 'All';
 
         const searchInput = document.getElementById('search-input');
         const sportSelect = document.getElementById('sport-select');
+        const medalSelect = document.getElementById('medal-select');
         const mobileView = document.getElementById('mobile-view');
         const desktopTbody = document.getElementById('desktop-tbody');
         const statGold = document.getElementById('stat-gold');
@@ -416,6 +437,7 @@
             populateSportFilter();
             searchInput.addEventListener('input', (e) => { searchTerm = e.target.value.toLowerCase(); renderAll(); });
             sportSelect.addEventListener('change', (e) => { selectedSport = e.target.value; renderAll(); });
+            medalSelect.addEventListener('change', (e) => { selectedMedal = e.target.value; renderAll(); });
             renderAll();
         }
 
@@ -448,7 +470,8 @@
                 const s = searchTerm.trim();
                 const matchSearch = item.sport.toLowerCase().includes(s) || item.event.toLowerCase().includes(s) || item.athletes.some(a => a.toLowerCase().includes(s));
                 const matchSport = selectedSport === 'All' || item.sport === selectedSport;
-                return matchSearch && matchSport;
+                const matchMedal = selectedMedal === 'All' || item.type === selectedMedal;
+                return matchSearch && matchSport && matchMedal;
             });
 
             const counts = { Gold: 0, Silver: 0, Bronze: 0 };

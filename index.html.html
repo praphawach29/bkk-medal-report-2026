@@ -20,6 +20,7 @@
     <div class="min-h-screen p-3 md:p-8">
         <div class="max-w-6xl mx-auto">
             
+            <!-- Header Section -->
             <header class="bg-emerald-700 rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-8 mb-6 md:mb-8 text-white shadow-xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-white/10 rounded-full -mr-16 -mt-16 md:-mr-20 md:-mt-20 blur-xl md:blur-2xl"></div>
                 <div class="relative z-10">
@@ -31,29 +32,30 @@
                 </div>
             </header>
 
+            <!-- Dashboard Stats -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
-                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:border-amber-200 transition-colors">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-2 md:mb-3 bg-amber-100 text-amber-500">
                         <i data-lucide="award" class="w-5 h-5 md:w-7 md:h-7"></i>
                     </div>
                     <span class="text-slate-500 text-[11px] md:text-sm font-medium">เหรียญทอง</span>
                     <span id="stat-gold" class="text-xl md:text-3xl font-bold text-slate-800">0</span>
                 </div>
-                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:border-slate-300 transition-colors">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-2 md:mb-3 bg-slate-100 text-slate-400">
                         <i data-lucide="award" class="w-5 h-5 md:w-7 md:h-7"></i>
                     </div>
                     <span class="text-slate-500 text-[11px] md:text-sm font-medium">เหรียญเงิน</span>
                     <span id="stat-silver" class="text-xl md:text-3xl font-bold text-slate-800">0</span>
                 </div>
-                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center hover:border-orange-300 transition-colors">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-2 md:mb-3 bg-orange-50 text-orange-700">
                         <i data-lucide="award" class="w-5 h-5 md:w-7 md:h-7"></i>
                     </div>
                     <span class="text-slate-500 text-[11px] md:text-sm font-medium">เหรียญทองแดง</span>
                     <span id="stat-bronze" class="text-xl md:text-3xl font-bold text-slate-800">0</span>
                 </div>
-                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-emerald-100 flex flex-col items-center text-center bg-emerald-50/30">
+                <div class="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-emerald-100 flex flex-col items-center text-center bg-emerald-50/30 hover:border-emerald-300 transition-colors">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-2 md:mb-3 bg-emerald-100 text-emerald-600">
                         <i data-lucide="trophy" class="w-5 h-5 md:w-7 md:h-7"></i>
                     </div>
@@ -62,10 +64,11 @@
                 </div>
             </div>
 
+            <!-- Search and Filter Bar -->
             <div class="flex flex-col md:flex-row gap-3 mb-6">
                 <div class="flex-1 bg-white p-3.5 md:p-4 rounded-xl md:rounded-2xl shadow-sm border border-slate-100 flex items-center gap-2 md:gap-3">
                     <i data-lucide="search" class="text-slate-400 w-5 h-5 shrink-0"></i>
-                    <input id="search-input" type="text" placeholder="ค้นหาชื่อนักกีฬา, ชนิดกีฬา หรือรายการ..." class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none" />
+                    <input id="search-input" type="text" placeholder="ค้นหาชื่อนักกีฬา, ชนิดกีฬา หรือรายการแข่งขัน..." class="w-full bg-transparent border-none focus:ring-0 text-sm md:text-base text-slate-700 outline-none" />
                 </div>
                 
                 <div class="flex gap-3">
@@ -89,7 +92,10 @@
                 </div>
             </div>
 
+            <!-- Mobile View (Cards) -->
             <div id="mobile-view" class="md:hidden space-y-3 mb-8"></div>
+
+            <!-- Desktop View (Table) -->
             <div class="hidden md:block bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-8">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
@@ -106,6 +112,7 @@
                     </table>
                 </div>
             </div>
+
             <footer class="mt-6 md:mt-8 text-center text-slate-400 text-xs md:text-sm pb-8">
                 <p>© 2569 กรุงเทพมหานคร - รายงานสรุปผลการแข่งขันกีฬา</p>
             </footer>
@@ -113,9 +120,9 @@
     </div>
 
     <script>
-        // ข้อมูลอัปเดตล่าสุด 17 พ.ค. 2569 (รวม 354 รายการ)
+        // ข้อมูลอัปเดตล่าสุด 17 พ.ค. 2569 (รวม 354 รายการ ทอง: 136, เงิน: 99, ทองแดง: 119)
         const medalData = [
-            // GOLD
+            // GOLD (136)
             { type: 'Gold', sport: 'กรีฑา', event: 'กระโดดไกล - ชาย', athletes: ['ธนกร แดงมณี'] },
             { type: 'Gold', sport: 'กรีฑา', event: 'กระโดดค้ำ - ชาย', athletes: ['ธนกร แดงมณี'] },
             { type: 'Gold', sport: 'กรีฑา', event: 'ขว้างค้อน - ชาย', athletes: ['ณดนัย รวยสูงเนิน'] },
@@ -179,13 +186,13 @@
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - บุคคลหญิง', athletes: ['ณัฐรดา ตอนศรี'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นอัดลม - ทีมหญิง', athletes: ['ณัฐรดา ตอนศรี', 'สุพิชญา ลักษณะพริ้ม', 'อัญชิษฐา แซ่ลิ่ม'] },
             { type: 'Gold', sport: 'ยิงปืน', event: 'ปืนสั้นอัดลมคู่ผสมชาย - หญิง (10 Air Pistol Mixed Team)', athletes: ['ณัฐรดา ตอนศรี', 'ปิยวิทย์ โพธิ์กุล'] },
-            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Production Division หญิง', athletes: ['กัญญาณัฐ ประเสริฐเจริญสุข'] },
-            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Standard Division ชาย', athletes: ['นพสุวรรณ กาญจนทรางกูร'] },
-            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Standard Division หญิง', athletes: ['ภัทรธิดา มะแก้ว'] },
+            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Production Division หญิง (J-P-F)', athletes: ['กัญญาณัฐ ประเสริฐเจริญสุข'] },
+            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Standard Division ชาย (J-S-M)', athletes: ['นพสุวรรณ กาญจนทรางกูร'] },
+            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Standard Division หญิง (J-S-F)', athletes: ['ภัทรธิดา มะแก้ว'] },
             { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Mixed Team) Production Division ทีมผสม 4 คน', athletes: ['กัญญาณัฐ ประเสริฐเจริญสุข', 'ธีธัช เหลืองอร่ามกุล', 'พัฒร์วรรษ เอี่ยมสินธร', 'ไอยสวรรค์ มณีจันสุข'] },
             { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Mixed Team) Standard Division ทีมผสม 4 คน', athletes: ['การัณญภาส นาคเนื้อดี', 'ณฤธร จารุเพียรเลิศ', 'นพสุวรรณ กาญจนทรางกูร', 'ภัทรธิดา มะแก้ว'] },
-            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Production Division ชาย', athletes: ['พัฒร์วรรษ เอี่ยมสินธร'] },
-            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Standard Division ชาย', athletes: ['ณฤธร จารุเพียรเลิศ'] },
+            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Production Division ชาย (SJ-P-M)', athletes: ['พัฒร์วรรษ เอี่ยมสินธร'] },
+            { type: 'Gold', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Standard Division ชาย (SJ-S-M)', athletes: ['ณฤธร จารุเพียรเลิศ'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'กรุ๊ปอุปกรณ์ 5 ริบบิ้น - ทีมทั่วไป', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ทีมหญิง COM I', athletes: ['โจโจ ทวินันท์', 'พัชญาธรณ์ หงษ์ปภา', 'เลไลยก์ ศิริธัญญะรัตน์', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Gold', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ประเภทบุคคลอุปกรณ์ (คฑา) - หญิง', athletes: ['สมนต์วฤณ นิ่มเนติพันธ์'] },
@@ -261,6 +268,7 @@
             { type: 'Silver', sport: 'คาราเต้', event: 'ท่ารำบุคคลชาย รุ่นอายุ 14 - 18 ปี', athletes: ['พีชายุทธ อ่างมณีกุล'] },
             { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลชาย รุ่น (- 55 กก.) อายุ 16-18 ปี', athletes: ['พีรพัฒน์ แก้วใสย์'] },
             { type: 'Silver', sport: 'คาราเต้', event: 'บุคคลหญิง รุ่น (- 48 กก.) อายุ 16-18 ปี', athletes: ['นันทณัฎฐ์ ชุ่มวงศ์'] },
+            { type: 'Silver', sport: 'จักรยาน', event: 'ลู่ สปรินท์ - บุคคลชาย', athletes: ['สิรวิชญ์ แสนใส'] },
             { type: 'Silver', sport: 'จักรยาน', event: 'ลู่ อิลิมิเนชั่นเรส - บุคคลชาย', athletes: ['รัชต รัชตธาดา'] },
             { type: 'Silver', sport: 'จักรยาน', event: 'BMX บุคคลหญิง', athletes: ['อนัญญา จารุเพ็ง'] },
             { type: 'Silver', sport: 'จักรยาน', event: 'ถนน ไทม์ไทรอัล - หญิง (15 กม.)', athletes: ['ธัญชนก จินาภิรมย์'] },
@@ -303,8 +311,8 @@
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - ทีมหญิง', athletes: ['เจย์ โสภณ', 'ณัฏฐ์ฐนิพา พูลเจริญ', 'ณัฐรดา ตอนศรี'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นสตรี - บุคคลหญิง', athletes: ['เจย์ โสภณ'] },
             { type: 'Silver', sport: 'ยิงปืน', event: 'ปืนสั้นมาตรฐาน - บุคคลหญิง', athletes: ['ณัฐรดา ตอนศรี'] },
-            { type: 'Silver', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Standard Division ชาย', athletes: ['การัณญภาส นาคเนื้อดี'] },
-            { type: 'Silver', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Production Division หญิง', athletes: ['ไอยสวรรค์ มณีจันสุข'] },
+            { type: 'Silver', sport: 'ยิงปืนรณยุทธ', event: '(Super Junior) Standard Division ชาย (SJ-S-M)', athletes: ['การัณญภาส นาคเนื้อดี'] },
+            { type: 'Silver', sport: 'ยิงปืนรณยุทธ', event: '(Junior) Production Division หญิง (J-P-F)', athletes: ['ไอยสวรรค์ มณีจันสุข'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ประเภทกรุ๊ป COM I คะแนนรวม 2ท่าชุด (5 ห่วง, 10 คฑา) - หญิง', athletes: ['ฉัตรทิพย์ กำพล', 'พัชญาธรณ์ หงษ์ปภา', 'พิณณดา วิรูหญาณ', 'วรัทยา ชัยพิทักษ์สมบัติ', 'สมนต์วฤณ นิ่มเนติพันธ์'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกลีลา ประเภทบุคคลอุปกรณ์ (บอล) - หญิง', athletes: ['โจโจ ทวินันท์'] },
             { type: 'Silver', sport: 'ยิมนาสติก', event: 'ยิมนาสติกแอโรบิก - คู่ผสม', athletes: ['ชณิดาภา เรณางกูร', 'พอพิสุทธิ์ ศรีคันธะรักษ์'] },
@@ -383,6 +391,8 @@
             { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'ทีมชาย', athletes: ['ชัชฌานนท์ บรรจงศิริ', 'ธรณินทร์ เจียมกาย', 'พัทธดนย์ ไลอ้อน', 'รวิพล ขวัญจันทร์', 'วิธวินท์ สุวรรณมณี'] },
             { type: 'Bronze', sport: 'ซอฟท์เทนนิส', event: 'บุคคลชาย', athletes: ['พัทธดนย์ ไลอ้อน'] },
             { type: 'Bronze', sport: 'ซอฟท์บอล', event: 'ทีมหญิง', athletes: ['กนกนวล พรมสี', 'จิดาภา บุญศรี', 'ชลธิชา ฉุดกลาง', 'ซีโมน่า สาธร', 'ฐิติฎา นาอุดม', 'ณัฏฐ์ฎาพร ศรีคงเมือง', 'ณิชชา สุระพันธ์', 'บุณยานุช มานะกิจไพบูลย์', 'ปรียาภัทร พรหมมาศ', 'พรทิพา เพ็ชรตะกั่ว', 'พิมพ์ชนก พิศิษฐอรรถการ', 'พิมพ์พรรณ เข็มเพ็ชร', 'ภูธิดา กีรติธนชัยวงษ์', 'รุจิรา พวงทอง', 'ลัลนา สุขยานี'] },
+            { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'ทีมชุด - ชาย', athletes: ['กันต์กวี แก้วพรม', 'กิตติคุณ ดีประสิทธิ์', 'ตะวัน มุกดาหาร', 'ธนพล โพธิราช', 'ปฏิภานต์ ปรีชา', 'ปัณณวัฒน์ ทอนศรี', 'พลาธิป ทองห่อ', 'รุจิภาส ทองยิ่ง', 'วรัญญู ไตรถิ่น', 'วิชชากร ศรีปาน', 'วิชิตชัย ศรีปาน', 'สิทธิพร ภูผาผุด'] },
+            { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'ทีมชุด - หญิง', athletes: ['กนกวรรณ เหล่าพร', 'จารุวรรณ ป้องศรี', 'จิตรลดา สุวรรณ์', 'ณัฎฐณิชา ทาจันดี', 'ณัฐดา สีนาคา', 'นภัสรดา โงนมะณี', 'ปพิชญา เคนคำภา', 'พีรดา ณ หนองคาย', 'เพชรไพลิน มีชัย', 'วริยา การรินทร์', 'วิชญาดา สีต่างคำ', 'วิภาวี ภูตะเวช'] },
             { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'ทีมเดี่ยว - ชาย', athletes: ['ปฏิภานต์ ปรีชา', 'พลาธิป ทองห่อ', 'วรัญญู ไตรถิ่น', 'วิชชากร ศรีปาน', 'สิทธิพร ภูผาผุด'] },
             { type: 'Bronze', sport: 'เซปักตะกร้อ', event: 'หญิงคู่', athletes: ['พีรดา ณ หนองคาย', 'วริยา การรินทร์', 'วิชญาดา สีต่างคำ'] },
             { type: 'Bronze', sport: 'ตะกร้อลอดห่วง', event: 'ทีมชาย (กติกาสากล)', athletes: ['จุฑาตะวัน กฤษฎาปาณัสม์', 'นนน พาหุมันโต', 'ภูตะวัน ฟูเหลือ', 'วิชญ์พล ศรีปาน', 'ศรัณยู เชอมึชา', 'สิทธิโชค วรรณประเภา'] },
@@ -465,10 +475,10 @@
             { type: 'Bronze', sport: 'หมากล้อม', event: 'คู่หญิง', athletes: ['ณฐารินทร์ ศรีโคตรโพธิ์', 'พิมมาดา ศรีสุข'] },
             { type: 'Bronze', sport: 'อีสปอร์ต', event: 'FC Online - บุคคลชาย', athletes: ['วชิรวิทย์ อินทร์แก้ว'] },
             { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Freestyle Classic Slalom - บุคคลหญิง (อายุ 8-12 ปี)', athletes: ['อภิชญา เย็นสุข'] },
-            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Point & Elimination อายุ 8 -20 ปี - บุคคลชาย', athletes: ['อรรถวิทย์ อินทรประเสริฐ'] },
-            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Inline Stunt (High Jump) - บุคคล', athletes: ['เตชิต เตชะปรีชาวงศ์'] },
             { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Inline Stunt Skate Cross - บุคคล', athletes: ['ศิรดา นิระพงษ์'] },
+            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Point & Elimination อายุ 8 -20 ปี - บุคคลชาย', athletes: ['อรรถวิทย์ อินทรประเสริฐ'] },
             { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Roller Freestyke Mini Ramp - บุคคล', athletes: ['ณัฐรินีย์ หอมสุวรรณ'] },
+            { type: 'Bronze', sport: 'เอ็กซ์ตรีม', event: 'Inline Stunt (High Jump) - บุคคล', athletes: ['เตชิต เตชะปรีชาวงศ์'] },
             { type: 'Bronze', sport: 'ฮอกกี้', event: 'ในร่ม Indoor Hockey ทีมหญิง', athletes: ['กุลรดา แก้วชำนาญ', 'ทักษอร งามชื่น', 'ธัญพิชชา จงพิพัฒนศิริ', 'ธีร์จุฑา ปฐมฌาณะสกุล', 'บุณณ์ญาณ์ ชวลิตนันทพร', 'ปฐมารัตน์ ชวลิตนันทพร', 'ปภาวรินทร์ ภูไทวัฒนา', 'พชรมน ภู่พิชิต', 'พริมา รุ่งพรทวีวัฒน์', 'พิมรดา งามชื่น', 'วิสาขา กองฟู', 'อัยรินทร์ ลิมบานเย็น'] },
             { type: 'Bronze', sport: 'แฮนด์บอล', event: 'ทีมหญิง', athletes: ['กชพรรณ ตันสุวรรณดี', 'กุลิสรา บุญตาม', 'ณัชชา เมฆเกรียงไกร', 'ณัฐชรี สมสุวรรณ', 'ธมกร เปียเนตร์', 'ธีร์วรา วิศาพล', 'นนณภัส พงศ์วรินทร์', 'บุษยมาศ ดินดำ', 'ปทิตตา กมลสินธ์', 'ปัญญ์สิรี จิรายุวัฒนา', 'พรจรัส อ่อนสมพงษ์', 'แพรวารินทร์ ศรีรัตนปัญญาธร', 'สวรรยา บัวเผื่อน', 'สุภัสสรา อารีสินพิทักษ์', 'อรฉัตร รอดอ๊าด', 'อรวรรยา สดกลาง'] }
         ];
